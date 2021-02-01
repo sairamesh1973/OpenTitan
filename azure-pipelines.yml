@@ -370,8 +370,17 @@ jobs:
 
       echo Implementation log
       cat $OBJ_DIR/hw/synth-vivado/lowrisc_systems_top_earlgrey_nexysvideo_0.1.runs/impl_1/runme.log || true
+
+      echo Display changes made to the source tree
+      git diff
     condition: always()
     displayName: Display synthesis and implementation logs
+  - publish: "$(Build.SourcesDirectory)"
+    artifact: top_earlgrey_nexysvideo-sources
+    displayName: 'Upload all (modified) sources (DEBUG)'
+  - publish: "$(Build.ArtifactStagingDirectory)"
+    artifact: top_earlgrey_nexysvideo-build-out
+    displayName: 'Upload all Vivado outputs (DEBUG)'
   - template: ci/upload-artifacts-template.yml
     parameters:
       artifact: top_earlgrey_nexysvideo
