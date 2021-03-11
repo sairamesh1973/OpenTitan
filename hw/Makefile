@@ -30,7 +30,6 @@ IPS ?= aes           \
        pattgen       \
        pinmux        \
        pwrmgr        \
-       rbox          \
        rstmgr        \
        rv_plic       \
        rv_timer      \
